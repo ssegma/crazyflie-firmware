@@ -70,7 +70,7 @@ int configblockInit(void)
 
   //Verify the config block
   if (configblock->magic!=MAGIC || configblock->version!= VERSION || 
-      calculate_cksum(configblock, sizeof(*configblock)) )
+      configblock->cksum != calculate_cksum(configblock, sizeof(*configblock)) )
     return -1;
 
   cb_ok = true;
